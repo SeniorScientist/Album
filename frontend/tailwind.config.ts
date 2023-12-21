@@ -14,7 +14,7 @@ export default {
     container: {
       center: true,
       padding: '3rem',
-      screns: {
+      screens: {
         xs: '390px',
         sm: '576px',
         md: '960px',
@@ -25,16 +25,16 @@ export default {
       colors: {
         border: 'hsl(var(--border))',
         input: {
-          default: 'hsl(var(--input))',
+          DEFAULT: 'hsl(var(--input))',
           invalid: 'hsl(var(--input-invalid))',
         },
         background: 'hsl(var(--background))',
         button: {
-          default: 'hsl(var(--button))',
+          DEFAULT: 'hsl(var(--button))',
           invalid: 'hsl(var(--button-invalid))',
         },
         card: {
-          default: 'hsl(var(--card))',
+          DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
       },
@@ -52,15 +52,15 @@ export default {
         button: ['0.875rem', { lineHeight: '1rem', fontWeight: '700' }],
         caption: ['0.75rem', { lineHeight: '1rem', fontWeight: '600' }],
       },
-    },
-    keyframes: {
-      'accordion-down': {
-        from: { height: '0' },
-        to: { height: 'var(--radix-accordion-content-height)' },
-      },
-      'accordion-up': {
-        from: { height: 'var(--radix-accordion-content-height)' },
-        to: { height: '0' },
+      keyframes: {
+        'accordion-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',

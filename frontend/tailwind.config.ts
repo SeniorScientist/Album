@@ -11,44 +11,37 @@ export default {
     './src/containers/*.{ts,tsx}',
   ],
   theme: {
-    container: {
-      center: true,
-      padding: '3rem',
+    extend: {
       screens: {
         xs: '390px',
         sm: '576px',
         md: '960px',
         lg: '1440px',
       },
-    },
-    extend: {
       colors: {
-        border: 'hsl(var(--border))',
+        border: 'var(--border)',
         input: {
-          DEFAULT: 'hsl(var(--input))',
-          invalid: 'hsl(var(--input-invalid))',
+          DEFAULT: 'var(--primary))',
+          hint: 'var(--primary-foreground)',
         },
-        background: 'hsl(var(--background))',
+        background: 'var(--background)',
         button: {
-          DEFAULT: 'hsl(var(--button))',
-          invalid: 'hsl(var(--button-invalid))',
+          DEFAULT: 'var(--primary)'
         },
         card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
+          DEFAULT: 'var(--card-foreground)'
         },
       },
       borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        lg: 'var(--radius-lg)',
+        md: 'var(--radius-md)'
       },
       fontFamily: {
         inter: ['var(--font-inter)', ...defaultTheme.fontFamily.mono],
         sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
+        judson: ['var(--font-judson)', ...defaultTheme.fontFamily.mono]
       },
       fontSize: {
-        // 1rem = 16px
         mega: ['3.375rem', { lineHeight: '4.25rem', fontWeight: '400' }],
         button: ['0.875rem', { lineHeight: '1rem', fontWeight: '700' }],
         caption: ['0.75rem', { lineHeight: '1rem', fontWeight: '600' }],

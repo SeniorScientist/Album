@@ -7,6 +7,16 @@
 		--font-sans: Open sans;
 		--font-inter: Inter;
 		--font-judson: Judson;
+		--radius-lg: 0.375rem;
+		--radius-md: 0.1875rem;
+
+		--border: rgba(101, 48, 48, 0);
+		--background: rgba(207, 214, 219, 1);
+		--primary: rgba(0, 0, 0, 1);
+		--primary-foreground: rgba(0, 0, 0, 0.5);
+		--input-background: rgba(101, 48, 48, 0);
+		--secondary: rgba(255, 255, 255, 1);
+		--card-foreground: rgba(217, 217, 217, 1);
 	}
 }
 

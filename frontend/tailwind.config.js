@@ -7,7 +7,15 @@ export default {
     './src/containers/*.{ts,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        xs: '390px',
+        sm: '576px',
+        md: '960px',
+        lg: '1440px',
+      },
+      colors: {},
+    },
   },
   plugins: [],
 }

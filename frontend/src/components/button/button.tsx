@@ -4,9 +4,16 @@ import { Slot } from '@radix-ui/react-slot'
 import { cn } from '../../utils/misc'
 
 const buttonVariants = cva(
+  'inline-flex items-center justify-center rounded-lg text-button outline-none',
   {
     variants: {
+      variant: {
+        default: '',
 
+      },
+      size: {
+        default: ''
+      }
     },
     defaultVariants: {
       variant: 'default',

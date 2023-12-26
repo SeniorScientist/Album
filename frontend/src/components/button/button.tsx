@@ -4,7 +4,7 @@ import { Slot } from '@radix-ui/react-slot'
 import { cn } from '../../utils/misc'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center rounded-lg text-button outline-none',
+  'inline-flex items-center justify-center rounded-lg text-button w-full h-16 before:ease relative overflow-hidden bg-button-default text-button-text outline-none font-inter transition-all before:absolute before:right-0 before:top-0 before:h-full before:w-12 before:translate-x-12 before:bg-white before:opacity-10 before:duration-700 hover:shadow-black-500 hover:before:-translate-x-72 active:opacity-85 disabled:opacity-25 disabled:cursor-default',
   {
     variants: {
       variant: {
@@ -42,4 +42,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = 'Button'
 
-export { Button, buttonVariants }
+export default Button

@@ -1,56 +1,52 @@
 /** @type {import('tailwindcss').Config} */
-import { type Config } from 'tailwindcss'
 import defaultTheme from 'tailwindcss/defaultTheme'
 import animatePlugin from 'tailwindcss-animate'
 
-export default {
+const twConfig = {
   content: [
     './index.html',
-    './src/app/*.{ts,tsx}',
-    './src/components/*.{ts,tsx}',
-    './src/containers/*.{ts,tsx}',
+    '/src/pages/*.{ts, tsx}',
+    './src/pages/**/*.{ts,tsx}',
+    './src/components/**/*.{ts,tsx}',
+    './src/layouts/*.{ts,tsx}',
   ],
   theme: {
-    container: {
-      center: true,
-      padding: '3rem',
+    extend: {
       screens: {
         xs: '390px',
         sm: '576px',
         md: '960px',
         lg: '1440px',
       },
-    },
-    extend: {
       colors: {
-        border: 'hsl(var(--border))',
+        border: 'var(--primary)',
+        label: 'var(--primary)',
         input: {
-          DEFAULT: 'hsl(var(--input))',
-          invalid: 'hsl(var(--input-invalid))',
+          default: 'var(--input-background))',
+          hint: 'var(--primary-foreground)',
         },
-        background: 'hsl(var(--background))',
+        background: 'var(--background)',
         button: {
-          DEFAULT: 'hsl(var(--button))',
-          invalid: 'hsl(var(--button-invalid))',
+          default: 'var(--primary)',
+          text: 'var(--secondary)'
         },
         card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
+          default: 'var(--card-foreground)',
         },
       },
       borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        lg: 'var(--radius-lg)',
+        md: 'var(--radius-md)',
       },
       fontFamily: {
         inter: ['var(--font-inter)', ...defaultTheme.fontFamily.mono],
         sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
+        judson: ['var(--font-judson)', ...defaultTheme.fontFamily.mono],
       },
       fontSize: {
-        // 1rem = 16px
         mega: ['3.375rem', { lineHeight: '4.25rem', fontWeight: '400' }],
         button: ['0.875rem', { lineHeight: '1rem', fontWeight: '700' }],
+        input: ['1.125rem', { lineHeight: '1.375rem', fontWeight: '400' }],
         caption: ['0.75rem', { lineHeight: '1rem', fontWeight: '600' }],
       },
       keyframes: {
@@ -65,9 +61,11 @@ export default {
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out'
       },
     },
   },
   plugins: [animatePlugin],
-} satisfies Config
+}
+
+export default twConfig

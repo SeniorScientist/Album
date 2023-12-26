@@ -1,14 +1,14 @@
 /** @type {import('tailwindcss').Config} */
-import { type Config } from 'tailwindcss'
 import defaultTheme from 'tailwindcss/defaultTheme'
 import animatePlugin from 'tailwindcss-animate'
 
-export default {
+const twConfig = {
   content: [
     './index.html',
-    './src/app/*.{ts,tsx}',
-    './src/components/*.{ts,tsx}',
-    './src/containers/*.{ts,tsx}',
+    '/src/pages/*.{ts, tsx}',
+    './src/pages/**/*.{ts,tsx}',
+    './src/components/**/*.{ts,tsx}',
+    './src/layouts/*.{ts,tsx}',
   ],
   theme: {
     extend: {
@@ -19,31 +19,34 @@ export default {
         lg: '1440px',
       },
       colors: {
-        border: 'var(--border)',
+        border: 'var(--primary)',
+        label: 'var(--primary)',
         input: {
-          DEFAULT: 'var(--primary))',
+          default: 'var(--input-background))',
           hint: 'var(--primary-foreground)',
         },
         background: 'var(--background)',
         button: {
-          DEFAULT: 'var(--primary)'
+          default: 'var(--primary)',
+          text: 'var(--secondary)'
         },
         card: {
-          DEFAULT: 'var(--card-foreground)'
+          default: 'var(--card-foreground)',
         },
       },
       borderRadius: {
         lg: 'var(--radius-lg)',
-        md: 'var(--radius-md)'
+        md: 'var(--radius-md)',
       },
       fontFamily: {
         inter: ['var(--font-inter)', ...defaultTheme.fontFamily.mono],
         sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
-        judson: ['var(--font-judson)', ...defaultTheme.fontFamily.mono]
+        judson: ['var(--font-judson)', ...defaultTheme.fontFamily.mono],
       },
       fontSize: {
         mega: ['3.375rem', { lineHeight: '4.25rem', fontWeight: '400' }],
         button: ['0.875rem', { lineHeight: '1rem', fontWeight: '700' }],
+        input: ['1.125rem', { lineHeight: '1.375rem', fontWeight: '400' }],
         caption: ['0.75rem', { lineHeight: '1rem', fontWeight: '600' }],
       },
       keyframes: {
@@ -58,9 +61,11 @@ export default {
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out'
       },
     },
   },
   plugins: [animatePlugin],
-} satisfies Config
+}
+
+export default twConfig

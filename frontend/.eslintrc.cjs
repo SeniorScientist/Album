@@ -18,6 +18,8 @@ module.exports = {
 	rules: {
 		'@typescript-eslint/no-unused-vars': 'error',
 		'@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+		'@typescript-eslint/consistent-type-definitions': 'error',
+		'@typescript-eslint/no-explicit-any': 0,
 		'react-refresh/only-export-components': [
 			'warn',
 			{ allowConstantExport: true },

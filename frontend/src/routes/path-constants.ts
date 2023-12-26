@@ -1,8 +1,9 @@
 const PathConstants = {
   HOME: '/',
   AUTH: '/auth',
-  REGISTER: '/auth/register',
-  LOGIN: '/auth/login',
+  SIGNUP: '/auth/signup',
+  SIGNIN: '/auth/signin',
+  FORGOTPWD: '/auth/forgot-password',
   MAIN: '/main'
 }
 

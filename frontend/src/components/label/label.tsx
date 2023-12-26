@@ -4,7 +4,7 @@ import * as LabelPrimitive from '@radix-ui/react-label'
 import { cn } from '../../utils/misc'
 
 const labelVariants = cva(
-  'text-caption peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
+  'text-mega text-label peer-disabled:cursor-not-allowed peer-disabled:opacity-70 font-sans',
 )
 
 const Label = React.forwardRef<
@@ -20,4 +20,4 @@ const Label = React.forwardRef<
 ))
 Label.displayName = LabelPrimitive.Root.displayName
 
-export { Label }
+export default Label

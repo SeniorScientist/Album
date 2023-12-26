@@ -9,9 +9,9 @@ const routes: RouteObject[] = [
     path: '/', element: <Layout />, errorElement: <Page404 />, children: [
       {
         path: PathConstants.AUTH, children: [
-          { path: PathConstants.AUTH, element: <Navigate to={PathConstants.LOGIN} /> },
-          { path: PathConstants.LOGIN, Component: React.lazy(() => import('../pages/auth/Login')) },
-          { path: PathConstants.REGISTER, Component: React.lazy(() => import('../pages/auth/Register')) }
+          { path: PathConstants.AUTH, element: <Navigate to={PathConstants.SIGNIN} /> },
+          { path: PathConstants.SIGNUP, Component: React.lazy(() => import('../pages/auth/Signup')) },
+          { path: PathConstants.SIGNIN, Component: React.lazy(() => import('../pages/auth/Signin')) }
         ]
       },
       { path: PathConstants.MAIN, Component: React.lazy(() => import('../pages/Main')) }

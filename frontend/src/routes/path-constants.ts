@@ -4,7 +4,9 @@ const PathConstants = {
   SIGNUP: '/auth/signup',
   SIGNIN: '/auth/signin',
   FORGOTPWD: '/auth/forgot-password',
-  MAIN: '/main'
+  UPDATEPROFILE: '/update-profile',
+  DASHBOARD: '/dashboard',
+  UPLOAD: '/upload'
 }
 
 export default PathConstants

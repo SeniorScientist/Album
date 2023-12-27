@@ -18,7 +18,7 @@ import { Checkbox } from '../../components/checkbox/checkbox'
 export default function SignIn() {
 
   const { register, formState: { errors }, handleSubmit } = useForm<SignInCredential>({ resolver: yupResolver(loginSchema) })
-  const { login, currentUser } = useAuth()
+  const { login } = useAuth()
   const [error, setError] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
   const navigate = useNavigate()

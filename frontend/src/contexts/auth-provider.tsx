@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { IAuthProviderProps } from '../interfaces/context'
 import { auth } from '../firebase'
 import firebase from 'firebase/compat/app'
-import { GoogleAuthProvider } from 'firebase/auth/cordova'
-import { GithubAuthProvider, UserCredential, signInWithPopup } from 'firebase/auth'
+import { GithubAuthProvider, GoogleAuthProvider, UserCredential, signInWithPopup } from 'firebase/auth'
 import { AuthContext } from './auth-context'
-
+interface IAuthProviderProps {
+  children: JSX.Element
+}
 
 export default function AuthProvider({ children }: IAuthProviderProps): JSX.Element {
   const [currentUser, setCurrentUser] = useState<any>()

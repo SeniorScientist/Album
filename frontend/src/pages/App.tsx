@@ -6,6 +6,7 @@ import AuthProvider from '../contexts/auth-provider'
 import AppContextProviders from '../contexts/app-context-provider'
 import { ToastProvider } from '../contexts/toast-provider'
 
+
 function App() {
   const router = createBrowserRouter([
     {

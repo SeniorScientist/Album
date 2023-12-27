@@ -4,3 +4,4 @@ export enum EToastTypes {
   WARNING = 'warning',
   ERROR = 'error',
 }
+

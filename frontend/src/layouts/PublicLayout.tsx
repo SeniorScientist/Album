@@ -1,7 +1,7 @@
-import { Outlet } from "react-router-dom"
-import { Suspense } from "react"
+import { Outlet } from 'react-router-dom'
+import { Suspense } from 'react'
 
-export default function Layout() {
+export default function PublicLayout() {
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>

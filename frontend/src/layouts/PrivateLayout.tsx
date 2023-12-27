@@ -2,18 +2,24 @@ import { Navigate, Outlet } from 'react-router-dom'
 import { Suspense } from 'react'
 import { useAuth } from '../contexts/auth-context'
 import Navbar from '../pages/album/Navbar'
+import PathConstants from '../routes/path-constants'
+import Loading from '../pages/Loading'
 
 export default function PrivateLayout() {
   const { currentUser } = useAuth()
 
   return currentUser ? (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <main className='flex flex-col min-h-full'>
         <Navbar />
-        <Outlet />
-      </Suspense>
+        <div className='grow flex justify-center'>
+          <Suspense fallback={<Loading />}>
+            <Outlet />
+          </Suspense>
+        </div>
+      </main>
     </>
   ) : (
-    <Navigate to="/auth/signin" />
+    <Navigate to={PathConstants.SIGNIN} />
   )
 }

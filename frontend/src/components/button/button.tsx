@@ -4,15 +4,16 @@ import { Slot } from '@radix-ui/react-slot'
 import { cn } from '../../utils/misc'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center rounded-lg text-button w-full h-16 before:ease relative overflow-hidden bg-button-default text-button-text outline-none font-inter transition-all before:absolute before:right-0 before:top-0 before:h-full before:w-12 before:translate-x-12 before:bg-white before:opacity-10 before:duration-700 hover:shadow-black-500 hover:before:-translate-x-72 active:opacity-85 disabled:opacity-25 disabled:cursor-default',
+  'inline-flex items-center justify-center text-button w-full overflow-hidden text-button-text outline-none font-inter transition-all disabled:cursor-default',
   {
     variants: {
       variant: {
-        default: '',
-
+        default: 'before:ease relative bg-button-default before:absolute before:right-0 before:top-0 before:h-full before:w-12 before:translate-x-12 before:bg-white before:opacity-10 before:duration-700 hover:shadow-black-500 hover:before:-translate-x-96 active:opacity-85 disabled:opacity-25',
+        icon: ''
       },
       size: {
-        default: ''
+        default: 'rounded-lg h-16',
+        icon: 'rounded-sm h-fit px-9 py-2'
       }
     },
     defaultVariants: {
@@ -22,7 +23,7 @@ const buttonVariants = cva(
   }
 )
 
-export interface ButtonProps
+interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
   VariantProps<typeof buttonVariants> {
   asChild?: boolean

@@ -1,4 +1,7 @@
-import { IAppContextProviderProps } from '../interfaces/context'
+interface IAppContextProviderProps {
+  components: Array<React.JSXElementConstructor<React.PropsWithChildren<any>>>
+  children: React.ReactNode
+}
 
 export default function AppContextProviders(props: IAppContextProviderProps) {
   const { components = [], children } = props

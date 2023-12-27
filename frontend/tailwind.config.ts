@@ -44,7 +44,7 @@ const twConfig = {
         judson: ['var(--font-judson)', ...defaultTheme.fontFamily.mono],
       },
       fontSize: {
-        mega: ['3.375rem', { lineHeight: '4.25rem', fontWeight: '400' }],
+        mega: ['3rem', { lineHeight: '4.25rem', fontWeight: '400' }],
         button: ['0.875rem', { lineHeight: '1rem', fontWeight: '700' }],
         input: ['1.125rem', { lineHeight: '1.375rem', fontWeight: '400' }],
         caption: ['0.75rem', { lineHeight: '1rem', fontWeight: '600' }],

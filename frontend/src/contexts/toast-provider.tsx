@@ -1,7 +1,10 @@
-import { IToastProviderProps } from '../interfaces/context'
 import { EToastTypes } from '../types/toast'
 import { ToastContainer, toast } from 'react-toastify'
 import { ToastContext } from './toast-context'
+
+interface IToastProviderProps {
+  children: JSX.Element
+}
 
 export function ToastProvider({ children }: IToastProviderProps): JSX.Element {
   function showTypedToast(

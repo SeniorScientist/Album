@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/auth-context'
 import { FaGithub, FaGoogle } from 'react-icons/fa'
+import Button from '../../components/button/button'
 
 export interface ISocialSignInProps {
   enabled?: boolean
@@ -33,25 +34,25 @@ export default function SocialSignIn({ enabled = true, setError }: ISocialSignIn
   }
 
   return (
-    <div className="flex flex-wrap justify-between gap-2 ">
-      <button
+    <div className="flex flex-wrap justify-between gap-2">
+      <Button
         onClick={handleGoogleLogin}
         disabled={!enabled}
-        className="relative flex justify-center flex-grow py-2 text-sm font-medium transition-colors bg-gray-200 border border-transparent rounded-md min-w-fit px-9 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-      >
-        <span className="inset-y-0 left-0 flex items-center ">
+        variant='icon'
+        size='icon'>
+        <span className="inset-y-0 left-0 flex items-center">
           <FaGoogle className="text-gray-500 h-7 w-7 group-hover:text-gray-600" />
         </span>
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={handleGithubLogin}
         disabled={!enabled}
-        className="relative flex justify-center flex-grow py-2 text-sm font-medium transition-colors bg-gray-200 border border-transparent rounded-md min-w-fit px-9 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-      >
-        <span className="inset-y-0 left-0 flex items-center ">
+        variant='icon'
+        size='icon'>
+        <span className="inset-y-0 left-0 flex items-center">
           <FaGithub className="text-gray-500 h-7 w-7 group-hover:text-gray-600" />
         </span>
-      </button>
+      </Button>
     </div>
   )
 }

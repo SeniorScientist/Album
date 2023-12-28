@@ -24,7 +24,8 @@
       "@middlewares/*": ["./middlewares/*"],
       "@utils/*": ["./utils/*"],
       "@routes/*": ["./routes/*"],
-      "@validations/*": ["./validations/*"]
+      "@validations/*": ["./validations/*"],
+      "@startups/*": ["./startups/*"]
     }
   },
   "exclude": ["node_modules", "build"]

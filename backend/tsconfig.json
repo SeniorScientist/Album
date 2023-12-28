@@ -25,7 +25,8 @@
       "@utils/*": ["./utils/*"],
       "@routes/*": ["./routes/*"],
       "@validations/*": ["./validations/*"],
-      "@startups/*": ["./startups/*"]
+      "@startups/*": ["./startups/*"],
+      "@types/*": ["./types/*"]
     }
   },
   "exclude": ["node_modules", "build"]

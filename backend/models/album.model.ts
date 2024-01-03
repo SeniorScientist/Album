@@ -3,7 +3,7 @@ import { model, Schema, Document } from 'mongoose'
 export interface AlbumDocument extends Document {
   title: string
   path: string
-  is_deleted: boolean
+  is_deleted?: boolean
 }
 
 const AlbumSchema = new Schema<AlbumDocument>({

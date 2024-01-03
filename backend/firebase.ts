@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase-admin/app'
+import admin from 'firebase-admin'
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -10,6 +10,6 @@ const firebaseConfig = {
   measurementId: process.env.FIREBASE_MEASUREMENT_ID
 }
 
-const app = initializeApp(firebaseConfig)
+admin.initializeApp(firebaseConfig)
 
-export default app
+export default admin

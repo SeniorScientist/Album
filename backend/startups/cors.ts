@@ -1,7 +1,7 @@
 import cors from 'cors'
-import { Express } from 'express'
+import express from 'express'
 
-export function initCORS(app: Express) {
+export function initCORS(app: express.Application) {
   app.use(
     cors({
       origin: `http://${process.env.HOST}`,

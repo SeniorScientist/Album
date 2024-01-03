@@ -4,7 +4,7 @@ import { Response } from 'express'
 export default class JSONResponse {
   constructor() { }
 
-  static success(res: Response, message: string, data: any) {
+  static success(res: Response, message: string, data?: any) {
     res.status(200).json({
       code: 200,
       message: message || 'success',

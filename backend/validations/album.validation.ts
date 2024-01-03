@@ -1,17 +1,73 @@
 import Joi from 'joi'
-import { AlbumDocument } from '@models/album.model'
-import { SearchDocument } from '@models/search.model'
+import { SearchDocument } from '../models/search.model'
+import { Request, Response, NextFunction } from 'express'
+import JSONResponse from '../middlewares/response.middleware'
+import { ErrorCode } from '../types/error.type'
 
-export function validateCreateAlbum(
-  input: Pick<AlbumDocument, 'title' | 'path'>
-) {
-  const schema = Joi.object({
-    title: Joi.string().min(2).max(50).required(),
-    path: Joi.string().max(255).required()
-  })
+export class AlbumValidator {
 
-  return schema.validate(input)
+  public validateCreateAlbum = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    try {
+      const { title, path } = req.body
+
+      Joi.object({
+        title: Joi.string().min(2).max(50).required(),
+        path: Joi.string().max(255).required()
+      }).validateAsync({ title, path })
+
+      next()
+    } catch (err: any) {
+      JSONResponse.error(res, ErrorCode.BAD_REQUEST, err.message)
+    }
+  }
+
+  public validateUpdateAlbum = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    try {
+      const { title, path } = req.body
+      const { id } = req.params
+
+      Joi.object({
+        id: Joi.string()
+          .regex(/^(?=[a-f\d]{24}$)(\d+[a-f]|[a-f]+\d)/)
+          .required()
+          .messages({ 'string.pattern.base': '"id" fails to match the required format' }),
+        title: Joi.string().min(2).max(50),
+        path: Joi.string().max(255)
+      }).validateAsync({ id, title, path })
+
+      next()
+    } catch (err: any) {
+      JSONResponse.error(res, ErrorCode.BAD_REQUEST, err.message)
+    }
+  }
+
+  public validateDeleteAlbum = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    try {
+      const { ids } = req.body
+
+      Joi.object({
+        ids: Joi.array().required()
+      }).validateAsync({ ids })
+
+      next()
+    } catch (err: any) {
+      JSONResponse.error(res, ErrorCode.BAD_REQUEST, err.message)
+    }
+  }
 }
+
 
 export function validateReadAlbum(
   input: Pick<SearchDocument, 'page' | 'sortBy' | 'order' | 'pageSize'>
@@ -21,28 +77,6 @@ export function validateReadAlbum(
     pageSize: Joi.number().min(12),
     sortBy: Joi.string().min(1),
     order: Joi.string().length(3)
-  })
-
-  return schema.validate(input)
-}
-
-export function validateUpdateAlbum(
-  input: Pick<AlbumDocument, 'title' | 'path' | '_id'>
-) {
-  const schema = Joi.object({
-    _id: Joi.string().required(),
-    title: Joi.string().min(2).max(50),
-    path: Joi.string().max(255)
-  })
-
-  return schema.validate(input)
-}
-
-export function validateDeleteAlbum(
-  input: any
-) {
-  const schema = Joi.object({
-    ids: Joi.array().required()
   })
 
   return schema.validate(input)

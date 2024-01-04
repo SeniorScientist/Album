@@ -2,17 +2,25 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "express backend for album",
-  "main": "build/src/server.ts",
+  "main": "",
   "scripts": {
-    "test": "cross-env NODE_ENV=test jest --testTimeout=5000",
-    "lint": "eslint . --ext js,ts --report-unused-disable-directives --max-warnings 0 --fix",
+    "lint": "tslint -c \"./tslint.json\" -p \"./tsconfig.json\"",
+    "clean": "rimraf ./dist && rimraf ./build && mkdirp build",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
-    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
-    "predev": "npm run swagger",
-    "build": "tsoa spec-and-routes && tsc --outDir build --experimentalDecorators",
-    "start": "node build/src/server.js",
-    "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
-    "swagger": "tsoa spec-and-routes"
+    "start": "npm run start:dev",
+    "start:dev": "npm run build:tsoa && npm run env:dev ts-node-dev --respawn ./src",
+    "start:prod": "npm run env:prod node ./dist/src/index.js",
+    "build:routes": "tsoa routes-and-spec",
+    "build:swagger": "tsoa swagger --basePath /service",
+    "build:tsoa": "npm run clean && npm run build:routes && npm run build:swagger",
+    "build:prod": "npm run build:tsoa && tsc && npm run copy",
+    "build": "npm run build:prod",
+    "copy": "npm run copy:swagger && npm run copy:env",
+    "copy:swagger": "cp -R ./build/swagger ./dist/build/swagger",
+    "copy:env": "cp -R ./src/config/env ./dist/src/config/env",
+    "env:dev": "cross-env NODE_ENV=development",
+    "env:test": "cross-env NODE_ENV=test",
+    "env:prod": "cross-env NODE_ENV=production"
   },
   "nodemonConfig": {
     "exec": "ts-node src/server.ts",
@@ -77,7 +85,10 @@
     "@typescript-eslint/parser": "^6.16.0",
     "concurrently": "^8.2.2",
     "eslint": "^8.56.0",
+    "mkdirp": "^3.0.1",
     "prettier": "^3.0.0-alpha.6",
+    "rimraf": "^5.0.5",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.3.3"
   }
 }

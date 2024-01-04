@@ -2,7 +2,7 @@ import Joi from 'joi'
 import { SearchDocument } from '../models/search.model'
 import { Request, Response, NextFunction } from 'express'
 import JSONResponse from '../middlewares/response.middleware'
-import { ErrorCode } from '../types/error.type'
+import { Code } from '../types/http.type'
 
 export class AlbumValidator {
 
@@ -21,7 +21,7 @@ export class AlbumValidator {
 
       next()
     } catch (err: any) {
-      JSONResponse.error(res, ErrorCode.BAD_REQUEST, err.message)
+      JSONResponse.error(res, Code.BAD_REQUEST, err.message)
     }
   }
 
@@ -45,7 +45,7 @@ export class AlbumValidator {
 
       next()
     } catch (err: any) {
-      JSONResponse.error(res, ErrorCode.BAD_REQUEST, err.message)
+      JSONResponse.error(res, Code.BAD_REQUEST, err.message)
     }
   }
 
@@ -63,7 +63,7 @@ export class AlbumValidator {
 
       next()
     } catch (err: any) {
-      JSONResponse.error(res, ErrorCode.BAD_REQUEST, err.message)
+      JSONResponse.error(res, Code.BAD_REQUEST, err.message)
     }
   }
 }

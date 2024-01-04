@@ -2,17 +2,28 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "express backend for album",
-  "main": "server.ts",
+  "main": "build/src/server.ts",
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --testTimeout=5000",
     "lint": "eslint . --ext js,ts --report-unused-disable-directives --max-warnings 0 --fix",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
-    "build": "tsc",
-    "tsc": "tsc",
-    "start": "node server.ts",
-    "dev": "nodemon server.ts",
-    "swagger-autogen": "node ./docs/swagger.ts"
+    "predev": "npm run swagger",
+    "build": "tsoa spec-and-routes && tsc --outDir build --experimentalDecorators",
+    "start": "node build/src/server.js",
+    "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
+    "swagger": "tsoa spec-and-routes"
+  },
+  "nodemonConfig": {
+    "exec": "ts-node src/server.ts",
+    "watch": [
+      "src"
+    ],
+    "ext": "ts",
+    "ignore": [
+      "build/**"
+    ],
+    "delay": 1000
   },
   "repository": {
     "type": "git",
@@ -42,11 +53,16 @@
     "express-rate-limit": "^7.1.5",
     "firebase-admin": "^12.0.0",
     "helmet": "^7.1.0",
+    "inversify": "^6.0.2",
+    "inversify-binding-decorators": "^4.0.0",
     "jest": "^29.7.0",
     "joi": "^17.11.0",
-    "mongo-sanitize": "^1.1.0",
     "mongoose": "^8.0.3",
+    "morgan": "^1.10.0",
+    "reflect-metadata": "^0.2.1",
     "supertest": "^6.3.3",
+    "swagger-ui-express": "^5.0.0",
+    "tsoa": "^6.0.0",
     "winston": "^3.11.0"
   },
   "devDependencies": {
@@ -54,13 +70,14 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/mongo-sanitize": "^1.0.3",
+    "@types/morgan": "^1.9.9",
     "@types/node": "^20.10.5",
+    "@types/swagger-ui-express": "^4.1.6",
     "@typescript-eslint/eslint-plugin": "^6.16.0",
     "@typescript-eslint/parser": "^6.16.0",
+    "concurrently": "^8.2.2",
     "eslint": "^8.56.0",
     "prettier": "^3.0.0-alpha.6",
-    "swagger-autogen": "^2.23.7",
-    "swagger-ui-express": "^5.0.0",
     "typescript": "^5.3.3"
   }
 }

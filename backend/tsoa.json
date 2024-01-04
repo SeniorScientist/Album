@@ -1,12 +1,19 @@
 {
-  "entryFile": "./src/server.ts",
+  "entryFile": "./build/routes.ts",
+  "outputDirectory": "./build/swagger",
   "noImplicitAdditionalProperties": "throw-on-extras",
   "controllerPathGlobs": ["./src/controllers/*.controller.ts"],
+  "specMerging": "recursive",
   "spec": {
     "outputDirectory": "build",
     "specVersion": 3
   },
   "routes": {
-    "routesDir": "build"
+    "entryFile": "./src/controllers/index.ts",
+    "routesDir": "./build",
+    "basePath": "/service/",
+    "authenticationModule": "./src/auth.ts",
+    "middleware": "express",
+    "iocModule": "./src/ioc"
   }
 }

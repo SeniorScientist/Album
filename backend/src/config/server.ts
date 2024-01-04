@@ -5,7 +5,6 @@ import bodyParser from 'body-parser'
 import { Logger } from './Logger'
 import morgan from 'morgan'
 import { ErrorHandler } from './ErrorHandler'
-import { iocContainer } from 'src/ioc'
 
 
 export class Server {
